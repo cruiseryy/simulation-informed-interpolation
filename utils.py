@@ -67,7 +67,7 @@ class sg_map_plotter:
         return 
     
 class gp_interpolator:
-    def __init__(self, P, e0 = 30, thres = 1e-3) -> None:
+    def __init__(self, P, e0 = 300, thres = 1e-3) -> None:
         # # of stations 
         self.p_ = P
         # # see Peng & Albertson 2021 but a vector of initial local noise levels is used here
@@ -115,9 +115,11 @@ class gp_interpolator:
                 tkyy = self.kxx[j, j]
                 txx_obs = xx_obs[:, mask]
                 
-                fit_y, _ = gp_infer(xx_obs = txx_obs, mu_x = tmu_x, kyx = tkyx, kxx = tkxx,
+                fit_y, fit_kyy = gp_infer(xx_obs = txx_obs, mu_x = tmu_x, kyx = tkyx, kxx = tkxx,
                                     mu_y = tmu_y, kyy = tkyy, sn = tsn)
                 tmp_err.append(np.sqrt(np.mean((xx_obs[:, j] - fit_y) ** 2)))
+            print(self.iter)
+            print(tmp_err)
             self.sn = np.array(tmp_err)
         return
     
