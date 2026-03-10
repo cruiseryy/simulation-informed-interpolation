@@ -12,8 +12,8 @@ import matplotlib.ticker as mticker
 from matplotlib import gridspec
 import time 
 import scipy.stats as stats
-import tensorflow as tf
-import tensorflow_probability as tfp
+# import tensorflow as tf
+# import tensorflow_probability as tfp
 
 plt.rcParams['font.family'] = 'Myriad Pro'
 
