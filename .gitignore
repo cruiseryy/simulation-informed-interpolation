@@ -1,2 +1,4 @@
 *.pkl
 .claude
+*.pyc
+.DS_Store
